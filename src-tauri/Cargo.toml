@@ -1,9 +1,12 @@
 [package]
 name = "encrypted-file-access-gui"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "a GUI of encrypted-file-access"
+authors = ["ccyuen1"]
 edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/ccyuen1/encrypted-file-access-gui"
+homepage = "https://github.com/ccyuen1/encrypted-file-access-gui"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
