@@ -31,6 +31,7 @@ body {
 
   height: stretch;
   margin-top: 0;
+  overflow: hidden;
 
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
