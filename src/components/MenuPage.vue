@@ -8,6 +8,9 @@ const emit = defineEmits<{ "switch-page": [page: string] }>();
     <div class="button-list">
       <button @click="emit('switch-page', 'CreatePage')">Create</button>
       <button @click="emit('switch-page', 'OpenPage')">Open</button>
+      <button @click="emit('switch-page', 'UpdatePasswordPage')">
+        Update Password
+      </button>
     </div>
   </div>
 </template>

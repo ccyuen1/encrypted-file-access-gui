@@ -3,6 +3,7 @@ import { ref } from "vue";
 import MenuPage from "./components/MenuPage.vue";
 import CreatePage from "./components/CreatePage.vue";
 import OpenPage from "./components/OpenPage.vue";
+import UpdatePasswordPage from "./components/UpdatePasswordPage.vue";
 
 const page = ref("MenuPage");
 </script>
@@ -14,6 +15,10 @@ const page = ref("MenuPage");
     @goto-menu="page = 'MenuPage'"
   />
   <OpenPage v-else-if="page === 'OpenPage'" @goto-menu="page = 'MenuPage'" />
+  <UpdatePasswordPage
+    v-else-if="page === 'UpdatePasswordPage'"
+    @goto-menu="page = 'MenuPage'"
+  />
 </template>
 
 <style>
