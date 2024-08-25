@@ -1,13 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import MenuPage from "./components/MenuPage.vue";
+import CreatePage from "./components/CreatePage.vue";
+import OpenPage from "./components/OpenPage.vue";
+
+const page = ref("MenuPage");
+</script>
 
 <template>
-  <div id="top-container">
-    <h1 class="app-title">Encrypted File Access</h1>
-    <div class="button-list">
-      <button>Create</button>
-      <button>Open</button>
-    </div>
-  </div>
+  <MenuPage v-if="page === 'MenuPage'" @switch-page="(p) => (page = p)" />
+  <CreatePage
+    v-else-if="page === 'CreatePage'"
+    @goto-menu="page = 'MenuPage'"
+  />
+  <OpenPage v-else-if="page === 'OpenPage'" @goto-menu="page = 'MenuPage'" />
 </template>
 
 <style>
@@ -38,29 +44,5 @@ body {
 
 #app {
   height: 100%;
-}
-</style>
-
-<style scoped>
-#top-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-title {
-  text-align: center;
-}
-
-.button-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
-  height: 100%;
-}
-
-.button-list button {
-  flex-grow: 1;
-  font-size: 20px;
 }
 </style>
