@@ -22,3 +22,8 @@ encrypted-file-access = { git = "https://github.com/ccyuen1/encrypted-file-acces
 [features]
 # This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
 custom-protocol = ["tauri/custom-protocol"]
+
+[profile.release]
+strip = "debuginfo"
+lto = true
+codegen-units = 1
