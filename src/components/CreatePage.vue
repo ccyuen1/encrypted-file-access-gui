@@ -11,6 +11,8 @@ const ext = ref("txt");
 const compress = ref(true);
 const xzLevel = ref(6);
 const progressMeg = ref("");
+const password = ref("");
+const confirmPassword = ref("");
 
 const disabled = ref(false);
 
@@ -41,20 +43,34 @@ function create() {
     progressMeg.value = "Please choose an output file path";
     return;
   }
+  if (password.value === "") {
+    progressMeg.value = "Please enter a password";
+    return;
+  }
+  if (password.value !== confirmPassword.value) {
+    progressMeg.value = "Passwords do not match";
+    return;
+  }
+
   progressMeg.value = "In Progress...";
   disabled.value = true;
-  invoke("create", {
-    outFile: outFile.value,
-    srcFile: srcFile.value,
-    ext: ext.value,
-    noCompress: !compress.value,
-    xzLevel: xzLevel.value,
-  })
+
+  const createArgs = {
+    args: {
+      out_file: outFile.value,
+      src: srcFile.value,
+      extension: ext.value,
+      no_compress: !compress.value,
+      xz_level: xzLevel.value,
+    },
+    password: password.value,
+  };
+  invoke("create", createArgs)
     .then(() => {
       progressMeg.value = "File created successfully";
     })
     .catch((error) => {
-      progressMeg.value = error;
+      progressMeg.value = error.toString();
     })
     .finally(() => (disabled.value = false));
 }
@@ -116,9 +132,33 @@ function create() {
       {{ xzLevel }}
     </div>
 
-    <div class="submit-container">
+    <div>
+      Create a password:
+      <input
+        type="password"
+        v-model="password"
+        required
+        autocomplete="new-password"
+        :disabled="disabled"
+      />
+    </div>
+
+    <div>
+      Enter the password again:
+      <input
+        type="password"
+        v-model="confirmPassword"
+        required
+        autocomplete="new-password"
+        :disabled="disabled"
+      />
+    </div>
+
+    <div class="submit-container nowrap">
       <button type="submit" :disabled="disabled">Create</button>
-      <span class="errorMsg nowrap">{{ progressMeg }}</span>
+      <div class="errorMsg">
+        <span>{{ progressMeg }}</span>
+      </div>
     </div>
   </form>
 </template>
@@ -134,9 +174,21 @@ h3 {
   overflow: hidden;
 }
 
+.submit-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .errorMsg {
   color: red;
   margin-left: 0.5em;
   font-style: italic;
+  user-select: text;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  overflow-y: hidden;
+  width: 100%;
+  text-wrap: nowrap;
+  display: inline;
 }
 </style>

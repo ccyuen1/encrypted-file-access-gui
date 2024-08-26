@@ -21,10 +21,10 @@
       {
         "label": "main",
         "url": "index.html",
-        "center": true,
         "title": "Encrypted File Access",
-        "width": 400,
-        "height": 200,
+        "center": true,
+        "width": 500,
+        "height": 350,
         "resizable": false
       }
     ],

@@ -879,7 +879,7 @@ dependencies = [
 [[package]]
 name = "encrypted-file-access"
 version = "0.1.0"
-source = "git+https://github.com/ccyuen1/encrypted-file-access#ae1e6aa9b9173459190bd07e147bf020fb18ff4f"
+source = "git+https://github.com/ccyuen1/encrypted-file-access.git?rev=ae1e6aa9b9173459190bd07e147bf020fb18ff4f#ae1e6aa9b9173459190bd07e147bf020fb18ff4f"
 dependencies = [
  "aead",
  "aes-gcm-siv",
