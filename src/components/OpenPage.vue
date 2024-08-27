@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { invoke, os } from "@tauri-apps/api";
 import { open } from "@tauri-apps/api/dialog";
-import { appWindow } from "@tauri-apps/api/window";
 import { ref } from "vue";
 
 const emit = defineEmits<{ "goto-menu": [] }>();
@@ -66,7 +65,6 @@ function openFile() {
     },
     password: password.value,
   };
-  appWindow.minimize();
   invoke("open", openArgs)
     .then(() => {
       progressMeg.value = "File opened and saved successfully";
