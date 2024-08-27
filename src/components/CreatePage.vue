@@ -83,7 +83,7 @@ function create() {
         &larr; Go Back
       </button>
     </nav>
-    <h3>Create a Password-Protected File</h3>
+    <h3 class="heading">Create a Password-Protected File</h3>
   </div>
 
   <form @submit.prevent="create">
@@ -165,31 +165,5 @@ function create() {
 </template>
 
 <style scoped>
-h3 {
-  text-align: center;
-  margin: 0.1em;
-}
-
-.nowrap {
-  text-wrap: nowrap;
-  overflow: hidden;
-}
-
-.submit-container {
-  display: flex;
-  flex-direction: row;
-}
-
-.errorMsg {
-  color: red;
-  margin-left: 0.5em;
-  font-style: italic;
-  user-select: text;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  overflow-y: hidden;
-  width: 100%;
-  text-wrap: nowrap;
-  display: inline;
-}
+@import "../assets/top-level-pages.css";
 </style>
