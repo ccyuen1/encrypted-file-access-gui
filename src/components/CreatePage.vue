@@ -124,11 +124,11 @@ function create() {
       XZ compression level:
       <input
         type="range"
-        v-model="xzLevel"
+        v-model.number="xzLevel"
         min="0"
         max="9"
         autocomplete="off"
-        :disabled="disabled"
+        :disabled="disabled || !compress"
       />
       {{ xzLevel }}
     </div>
