@@ -4,6 +4,7 @@ use encrypted_file_access::create::CreateArgs;
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
+/// Copy of CreateArgs to allow deriving [`Deserialize`]
 pub struct CreateArgsDef {
     out_file: PathBuf,
     src: Option<PathBuf>,
