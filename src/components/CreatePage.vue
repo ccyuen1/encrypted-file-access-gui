@@ -7,7 +7,7 @@ const emit = defineEmits<{ "goto-menu": [] }>();
 
 const outFile = ref<string | null>(null);
 const srcFile = ref<string | null>(null);
-const ext = ref("txt");
+const ext = ref("");
 const compress = ref(true);
 const xzLevel = ref(6);
 const progressMeg = ref("");
@@ -105,7 +105,13 @@ function create() {
 
     <div class="nowrap">
       Extension of source file:
-      <input v-model="ext" autocomplete="off" required :disabled="disabled" />
+      <input
+        v-model="ext"
+        autocomplete="off"
+        placeholder="e.g., txt, docx, pdf"
+        :required="!srcFile"
+        :disabled="disabled || !!srcFile"
+      />
     </div>
 
     <div>
