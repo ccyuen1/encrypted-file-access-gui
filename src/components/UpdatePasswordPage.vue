@@ -132,7 +132,7 @@ async function updatePassword() {
     </div>
 
     <div class="submit-container nowrap">
-      <button type="submit" :disabled="disabled">Open file</button>
+      <button type="submit" :disabled="disabled">Update password</button>
       <div class="errorMsg">
         <span>{{ progressMeg }}</span>
       </div>
