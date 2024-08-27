@@ -86,7 +86,7 @@ function create() {
     <h3>Create a Password-Protected File</h3>
   </div>
 
-  <form autocomplete="off" @submit.prevent="create">
+  <form @submit.prevent="create">
     <div class="nowrap">
       Output file:
       <button type="button" @click.prevent="chooseOutFile" :disabled="disabled">
@@ -105,7 +105,7 @@ function create() {
 
     <div class="nowrap">
       Extension of source file:
-      <input v-model="ext" required :disabled="disabled" />
+      <input v-model="ext" autocomplete="off" required :disabled="disabled" />
     </div>
 
     <div>
@@ -127,6 +127,7 @@ function create() {
         v-model="xzLevel"
         min="0"
         max="9"
+        autocomplete="off"
         :disabled="disabled"
       />
       {{ xzLevel }}
