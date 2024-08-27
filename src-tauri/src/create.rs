@@ -26,7 +26,17 @@ impl From<CreateArgsDef> for CreateArgs {
 }
 
 #[tauri::command]
-pub fn create(args: CreateArgsDef, password: String) -> Result<(), String> {
-    encrypted_file_access::create::create(&args.into(), Some(password.into()))
+pub async fn create(
+    args: CreateArgsDef,
+    password: String,
+) -> Result<(), String> {
+    tauri::async_runtime::spawn_blocking(move || {
+        encrypted_file_access::create::create(
+            &args.into(),
+            Some(password.into()),
+        )
         .map_err(|e| e.to_string())
+    })
+    .await
+    .map_err(|e| e.to_string())?
 }
