@@ -18,6 +18,9 @@
       },
       "os": {
         "all": true
+      },
+      "window": {
+        "minimize": true
       }
     },
     "windows": [
